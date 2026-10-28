@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "Candidate": {
+      "title": "Candidate",
+      "description": "An election candidate profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "post": { "type": "string", "enum": ["President", "Vice President", "Honorary Secretary", "Cabinet Member", "Court Member"] },
+        "facultyCategory": { "type": "string" },
+        "tagQuote": { "type": "string" },
+        "facultyOrDept": { "type": "string" },
+        "program": { "type": "string" },
+        "supportsCount": { "type": "number" },
+        "initials": { "type": "string" },
+        "colorTheme": { "type": "string", "enum": ["red", "emerald", "blue", "purple", "amber"] },
+        "avatarUrl": { "type": "string" },
+        "isVerified": { "type": "boolean" },
+        "assignedEmail": { "type": "string" },
+        "isUnallotted": { "type": "boolean" },
+        "bio": { "type": "string" },
+        "manifestoSummary": { "type": "array", "items": { "type": "string" } },
+        "visionAndGoals": { "type": "array", "items": { "type": "string" } },
+        "achievements": { "type": "array", "items": { "type": "string" } },
+        "campaignGallery": { "type": "array", "items": { "type": "object" } },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string" },
+            "hall": { "type": "string" },
+            "roomOrDesk": { "type": "string" },
+            "whatsappDesk": { "type": "string" },
+            "instagram": { "type": "string" },
+            "whatsappGroupLink": { "type": "string" }
+          }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "post", "facultyCategory"]
+    },
+    "Vote": {
+      "title": "User Vote",
+      "description": "Stores a user's election choices",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "presidentId": { "type": "string" },
+        "vicePresidentId": { "type": "string" },
+        "secretaryId": { "type": "string" },
+        "courtMemberId": { "type": "string" },
+        "cabinetMemberIds": { "type": "array", "items": { "type": "string" }, "maxItems": 10 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "email"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized administrator",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "candidates/{candidateId}": {
+      "schema": "Candidate",
+      "description": "Collection of all election candidates"
+    },
+    "votes/{userId}": {
+      "schema": "Vote",
+      "description": "Collection of user votes"
+    },
+    "admins/{userId}": {
+      "schema": "Admin",
+      "description": "Collection of authorized admins"
+    }
+  }
+}

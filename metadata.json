@@ -1,0 +1,6 @@
+{
+  "name": "AMUSU Elections 2026 Portal",
+  "description": "AMU Student Union Elections portal - Know Your Candidates, Manifestos, Key Dates and Student Issues.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
