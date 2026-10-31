@@ -77,7 +77,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const ADMIN_EMAIL = 'ansaarsaif7@gmail.com';
+const ADMIN_EMAILS = ['reach.lastminute@gmail.com', 'ansaarsaif7@gmail.com'];
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -99,7 +99,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }, 3200);
   };
 
-  const isAdmin = firebaseUser?.email === ADMIN_EMAIL;
+  const isAdmin = firebaseUser?.email ? ADMIN_EMAILS.includes(firebaseUser.email) : false;
 
   // 1. Auth Listener
   useEffect(() => {
