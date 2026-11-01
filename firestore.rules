@@ -47,12 +47,22 @@ service cloud.firestore {
              (data.supportsCount == null || data.supportsCount is number);
     }
 
+    function isCandidateOwner() {
+      return isSignedIn() && 
+             resource.data.keys().hasAll(['assignedEmail']) && 
+             resource.data.assignedEmail is string && 
+             resource.data.assignedEmail.size() > 0 && 
+             request.auth.token.email == resource.data.assignedEmail;
+    }
+
     match /candidates/{candidateId} {
       allow read: if true;
       allow create: if isAdmin() && isValidCandidate(incoming());
       allow delete: if isAdmin();
       allow update: if (
         isAdmin() && isValidCandidate(incoming())
+      ) || (
+        isCandidateOwner() && isValidCandidate(incoming())
       ) || (
         isSignedIn() && 
         incoming().diff(existing()).affectedKeys().hasOnly(['supportsCount', 'updatedAt']) &&
