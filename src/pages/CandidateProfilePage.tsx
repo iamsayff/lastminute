@@ -33,6 +33,7 @@ import { CandidateEditModal } from '../components/CandidateEditModal';
 
 import { CandidateCard } from '../components/CandidateCard';
 import { VerifiedBadge } from '../components/VerifiedBadge';
+import { SalmanMoidPage } from './SalmanMoidPage';
 
 export const CandidateProfilePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -49,6 +50,10 @@ export const CandidateProfilePage: React.FC = () => {
 
   // Find candidate by id
   const candidate = candidates.find((c) => c.id === id);
+
+  if (candidate && candidate.name.toLowerCase().includes('salman moid')) {
+    return <SalmanMoidPage />;
+  }
 
   if (!candidate) {
     return (
@@ -342,15 +347,7 @@ export const CandidateProfilePage: React.FC = () => {
                 {candidate.bio}
               </p>
 
-              <div className="p-3.5 rounded-2xl bg-[#eaf5ef] border border-emerald-100 text-xs text-emerald-900 space-y-1 mt-3">
-                <span className="font-bold flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>Student Representation Charter</span>
-                </span>
-                <p className="text-emerald-800 leading-relaxed text-[11px] sm:text-xs">
-                  Nominated to contest as the representative of scholars across AMU residential halls and academic faculties.
-                </p>
-              </div>
+
             </div>
 
             {/* Core Manifesto Highlights */}

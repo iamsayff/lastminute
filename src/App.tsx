@@ -19,6 +19,7 @@ import { TimelinePage } from './pages/TimelinePage';
 import { NewsPage } from './pages/NewsPage';
 import { AboutPage } from './pages/AboutPage';
 import { SignInPage } from './pages/SignInPage';
+import { SalmanMoidPage } from './pages/SalmanMoidPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -105,6 +106,7 @@ function MainLayout() {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/signin" element={<SignInPage />} />
+            <Route path="/salman-moid" element={<SalmanMoidPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>
