@@ -63,7 +63,7 @@ export const TIMELINE_PHASES: TimelinePhase[] = [
   },
   {
     id: 'phase-3',
-    date: 'November 2, 2026',
+    date: 'November 5, 2026',
     phaseNum: 'Phase III',
     status: 'Voting Day',
     statusVariant: 'red',

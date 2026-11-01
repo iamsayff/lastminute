@@ -460,7 +460,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({ isOpen, onClos
                             />
                           ) : (
                             <span className="inline-block px-2.5 py-1 rounded-lg bg-slate-100 font-bold font-mono text-slate-700 text-xs">
-                              #{cand.initials || '0'}
+                              {cand.initials || '0'}
                             </span>
                           )}
                         </td>

@@ -73,6 +73,10 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({
   const postWords = candidate.post.split(' ');
   const isTwoWords = postWords.length >= 2;
 
+  // Ballot Number (default 0)
+  const rawBallot = candidate.initials?.trim();
+  const ballotNo = rawBallot && /^\d+$/.test(rawBallot) ? rawBallot : '0';
+
   return (
     <div className="relative bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between p-3 sm:p-4 pt-8 sm:pt-9 group">
       {/* 1. Diagonal Corner Ribbon for Post (Two-word stacked label for longer titles) */}
@@ -115,6 +119,13 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({
       {/* 3. Center Candidate Avatar / Ballot Circle */}
       <Link to={profileUrl} className="flex flex-col items-center mt-1 sm:mt-2 mb-2 sm:mb-3 block group-hover:opacity-95">
         <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 sm:border-3 bg-white flex items-center justify-center shadow-xs transition-transform group-hover:scale-102">
+          {/* Overlapping Circular Ballot Number Badge */}
+          <div
+            className={`absolute -top-1 -left-1 sm:-top-1.5 sm:-left-1.5 z-20 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white border-2 ${colorStyles.ringColor} shadow-md flex items-center justify-center select-none font-mono font-black ${colorStyles.initialsColor} text-[10.5px] sm:text-xs`}
+            title={`Ballot No. ${ballotNo}`}
+          >
+            <span>{ballotNo}</span>
+          </div>
           {candidate.isUnallotted ? (
             <div className={`w-full h-full rounded-full border-2 ${colorStyles.ringColor} flex flex-col items-center justify-center bg-slate-50/50 p-1.5 text-center`}>
               <span className={`text-xl sm:text-2xl font-extrabold ${colorStyles.initialsColor} tracking-wider font-mono leading-none`}>

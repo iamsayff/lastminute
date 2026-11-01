@@ -14,30 +14,30 @@ export const NewsPage: React.FC = () => {
   const newsItems = [
     {
       id: 'news-1',
-      date: 'October 27, 2026',
+      date: 'November 2, 2026',
+      tag: 'Debate Schedule',
+      tagColor: 'bg-blue-50 text-blue-800 border-blue-200',
+      title: 'Annual Union Hall Presidential Debate Scheduled at Kennedy Auditorium',
+      summary: 'Contesting candidates for the post of President will present their 10-minute visions followed by student audience Q&A on November 03, 2026 at 6:30 PM.',
+      author: 'Debating & Literary Club, AMU'
+    },
+    {
+      id: 'news-2',
+      date: 'October 31, 2026',
+      tag: 'Advisory',
+      tagColor: 'bg-amber-50 text-amber-800 border-amber-200',
+      title: 'Proctor Advisory on Posters and Painting Inside Campus',
+      summary: 'Strict prohibition on pasting posters on Halls and Walls of the Campus. Strict Action will be taken against those who break rules.',
+      author: 'Office of the Proctor'
+    },
+    {
+      id: 'news-3',
+      date: 'October 30, 2026',
       tag: 'Official Notification',
       tagColor: 'bg-emerald-50 text-emerald-800 border-emerald-200',
       title: 'Final Scrutiny of Nominations for AMUSU Office Bearers Released',
       summary: 'The Tribunal of the Chief Election Officer has completed scrutiny of all valid nomination papers for President, Vice-President, and Honorary Secretary.',
       author: 'Office of the Chief Election Officer'
-    },
-    {
-      id: 'news-2',
-      date: 'October 25, 2026',
-      tag: 'Debate Schedule',
-      tagColor: 'bg-blue-50 text-blue-800 border-blue-200',
-      title: 'Annual Union Hall Presidential Debate Scheduled at Kennedy Auditorium',
-      summary: 'Contesting candidates for the post of President will present their 10-minute visions followed by student audience Q&A on November 02, 2026 at 6:30 PM.',
-      author: 'Debating & Literary Club, AMU'
-    },
-    {
-      id: 'news-3',
-      date: 'October 22, 2026',
-      tag: 'Advisory',
-      tagColor: 'bg-amber-50 text-amber-800 border-amber-200',
-      title: 'Proctor Advisory on Noise Levels & Campaigning Vehicles Inside Campus',
-      summary: 'Strict prohibition on modified silencer motorcycles and loudspeaker rallies past 10:00 PM in residential halls and hospital campus zones.',
-      author: 'Office of the Proctor'
     },
     {
       id: 'news-4',

@@ -73,6 +73,9 @@ export const CandidateProfilePage: React.FC = () => {
 
   const isSupported = supportedCandidateIds.includes(candidate.id);
 
+  const rawBallot = candidate.initials?.trim();
+  const ballotNo = rawBallot && /^\d+$/.test(rawBallot) ? rawBallot : '0';
+
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
@@ -187,7 +190,16 @@ export const CandidateProfilePage: React.FC = () => {
         <div className="px-5 sm:px-8 pb-8 pt-0 flex flex-col items-center text-center">
           {/* 1. Profile Pic (Centered, overlapping the banner) */}
           <div className="relative -mt-16 sm:-mt-20 mb-3 z-20">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white bg-white shadow-xl overflow-hidden flex items-center justify-center">
+                {/* Stylish Circular Ballot Number Badge */}
+                <div 
+                  className={`absolute -top-2 -left-2 sm:-top-2.5 sm:-left-2.5 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border-2 sm:border-[2.5px] ${themeColors.border} shadow-lg flex flex-col items-center justify-center select-none font-mono ${themeColors.text}`} 
+                  title={`Ballot No. ${ballotNo}`}
+                >
+                  <span className="text-[6.5px] sm:text-[7px] font-extrabold uppercase tracking-tight leading-none opacity-80">BALLOT</span>
+                  <span className="text-xs sm:text-sm font-black leading-none mt-0.5">{ballotNo}</span>
+                </div>
+
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white bg-white shadow-xl overflow-hidden flex items-center justify-center">
               {candidate.isUnallotted ? (
                 <div className={`w-full h-full rounded-full border-2 ${themeColors.border} flex flex-col items-center justify-center bg-slate-50 p-2 text-center`}>
                   <span className={`text-2xl sm:text-3xl font-black font-mono ${themeColors.text}`}>
