@@ -13,7 +13,7 @@ export const StudentInitiativeBanner: React.FC<StudentInitiativeBannerProps> = (
     if (onClaimClick) {
       onClaimClick();
     } else {
-      window.location.href = 'mailto:contact@amusuelections.in?subject=AMU%20Elections%20Initiative%20-%20Candidate%20Listing%20Query';
+      window.location.href = 'mailto:reach.lastminute@gmail.com?subject=AMU%20Elections%20Initiative%20-%20Candidate%20Listing%20Query';
     }
   };
 
