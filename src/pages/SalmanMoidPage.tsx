@@ -54,6 +54,7 @@ export const SalmanMoidPage: React.FC = () => {
     supportsCount: 325,
     colorTheme: 'amber' as const,
     initials: 'SM',
+    bannerUrl: '',
     isVerified: true,
     assignedEmail: 'salmanmoid@myamu.ac.in',
     bio: 'Salman Moid is a dedicated postgraduate scholar contesting for the Court Member position in the AMUSU Elections 2026. Committed to transparent university governance, student welfare, and bridging communication between residential halls and administrative bodies.',
@@ -164,13 +165,14 @@ export const SalmanMoidPage: React.FC = () => {
       {/* 2. Main Candidate Profile Header Card */}
       <div className="relative rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-sm">
         {/* Banner */}
-        <div className={`relative h-48 sm:h-64 bg-gradient-to-r ${themeColors.bgHeader} overflow-hidden flex items-center justify-center p-6 text-center`}>
-          <div className="absolute inset-0 opacity-20 flex items-center justify-center pointer-events-none">
-            <MosqueSkyline fillColor="#ffffff" opacity={0.6} className="w-full h-full" />
-          </div>
-          <div className="relative z-10 text-white/90 text-xs sm:text-sm font-extrabold tracking-widest uppercase bg-black/20 backdrop-blur-xs px-4 py-1.5 rounded-full border border-white/20">
-            ALIGARH MUSLIM UNIVERSITY • {candidate.post.toUpperCase()}
-          </div>
+        <div className={`relative h-40 sm:h-64 ${candidate.bannerUrl ? 'bg-slate-900' : `bg-gradient-to-r ${themeColors.bgHeader}`} overflow-hidden flex items-center justify-center p-6 text-center`}>
+          {candidate.bannerUrl ? (
+            <img src="https://i.ibb.co/rfm548KT/A-degree-should-not-end-with-a-certificate-in-hand-and-uncertainty-in-the-other-1.png" alt="Candidate Banner" className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <div className="absolute inset-0 opacity-20 flex items-center justify-center pointer-events-none">
+              <MosqueSkyline fillColor="#ffffff" opacity={0.6} className="w-full h-full" />
+            </div>
+          )}
         </div>
 
         {/* Profile Card Content */}
@@ -300,9 +302,45 @@ export const SalmanMoidPage: React.FC = () => {
                 <span>About {candidate.name}</span>
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {candidate.bio}
-              </p>
+              <div className="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                {(() => {
+                  const renderWhatsAppFormatting = (text: string) => {
+                    if (!text) return null;
+                    const paragraphs = text.split('\n');
+
+                    return paragraphs.map((para, pIdx) => {
+                      const boldRegex = /\*([^*]+)\*/g;
+                      const parts = [];
+                      let lastIndex = 0;
+                      let match;
+
+                      while ((match = boldRegex.exec(para)) !== null) {
+                        if (match.index > lastIndex) {
+                          parts.push(para.substring(lastIndex, match.index));
+                        }
+                        parts.push(
+                          <strong key={`${pIdx}-${match.index}`} className="font-extrabold text-slate-900">
+                            {match[1]}
+                          </strong>
+                        );
+                        lastIndex = boldRegex.lastIndex;
+                      }
+
+                      if (lastIndex < para.length) {
+                        parts.push(para.substring(lastIndex));
+                      }
+
+                      return (
+                        <p key={pIdx} className={para === '' ? 'h-2' : ''}>
+                          {parts.length > 0 ? parts : para}
+                        </p>
+                      );
+                    });
+                  };
+
+                  return renderWhatsAppFormatting(candidate.bio || '');
+                })()}
+              </div>
             </div>
 
             {/* Core Manifesto Highlights */}
@@ -326,21 +364,21 @@ export const SalmanMoidPage: React.FC = () => {
               {/* Stylish Download Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-3">
                 <a
-                  href="#"
+                  href="https://drive.google.com/file/d/1ZU-8xDgVWa-T-NOT8Xsz9JEuTItC8O7c/view?usp=drive_link"
                   download
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold text-xs sm:text-sm shadow-md active:scale-95 transition-all cursor-pointer"
                 >
                   <FileText className="w-4 h-4 text-amber-200" />
-                  <span>Read Manifesto</span>
+                  <span>Read: Student Agenda</span>
                 </a>
 
                 <a
-                  href="#"
+                  href="https://drive.google.com/file/d/12I_W7xYuJ7G9LlPCkhHjQXLzDaMniABz/view?usp=sharing"
                   download
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-xs sm:text-sm shadow-md active:scale-95 transition-all cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-emerald-200" />
-                  <span>Vote Appeal</span>
+                  <span>Read: Vote Appeal</span>
                 </a>
               </div>
             </div>
