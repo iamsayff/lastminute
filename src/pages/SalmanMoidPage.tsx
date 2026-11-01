@@ -170,7 +170,7 @@ export const SalmanMoidPage: React.FC = () => {
         {/* Banner */}
         <div className={`relative h-40 sm:h-64 ${candidate.bannerUrl ? 'bg-slate-900' : `bg-gradient-to-r ${themeColors.bgHeader}`} overflow-hidden flex items-center justify-center p-6 text-center`}>
           {candidate.bannerUrl ? (
-            <img src="https://i.ibb.co/rfm548KT/A-degree-should-not-end-with-a-certificate-in-hand-and-uncertainty-in-the-other-1.png" alt="Candidate Banner" className="absolute inset-0 w-full h-full object-cover" />
+            <img src="https://i.ibb.co/gMb9fJhZ/A-degree-should-not-end-with-a-certificate-in-hand-and-uncertainty-in-the-other-2.png" alt="Candidate Banner" className="absolute inset-0 w-full h-full object-cover" />
           ) : (
             <div className="absolute inset-0 opacity-20 flex items-center justify-center pointer-events-none">
               <MosqueSkyline fillColor="#ffffff" opacity={0.6} className="w-full h-full" />
