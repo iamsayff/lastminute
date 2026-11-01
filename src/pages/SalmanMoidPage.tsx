@@ -153,7 +153,7 @@ export const SalmanMoidPage: React.FC = () => {
             {candidate.post}
           </Link>
           <span className="hidden sm:inline">/</span>
-          <span className="text-slate-800 font-semibold truncate">{candidate.name} (Special Profile)</span>
+          <span className="text-slate-800 font-semibold truncate">{candidate.name}</span>
         </div>
 
         <Link
@@ -253,7 +253,7 @@ export const SalmanMoidPage: React.FC = () => {
 
             {candidate.manifestoPdfUrl && (
               <a
-                href={candidate.manifestoPdfUrl}
+                href="https://drive.google.com/drive/folders/1HYUiJm8MaXhuOQsthQN1ACs8gtu6CUi3?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold text-xs sm:text-sm transition-all shadow-2xs cursor-pointer"
